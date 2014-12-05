@@ -1,5 +1,6 @@
 package Ludus.Res;
 
+import Ludus.Utilitates.Angulus;
 import Ludus.Utilitates.Situs;
 
 /**
@@ -21,5 +22,8 @@ public abstract class Res {
 
     public void setMovement(Situs movement)   { this.movement.set(movement); }
     public void setMovement(float x, float y) { this.movement.set(x, y);     }
+    public void setMovement(Angulus angle, float velocity) {
+        this.movement.set(velocity*angle.cos(), velocity*angle.sin());
+    }
 
 }
