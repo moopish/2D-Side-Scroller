@@ -109,6 +109,10 @@ public class Angulus {
     public static float convertToRadians  (float angle)                   { return (convertToRadians(angle, DEFAULT_TYPE));  }
     public static float convertToRadians  (float angle, AngulusType from) { return (from.toRadians(angle));                  }
 
+    public float        cos()                              { return (cos(angle, angleType)); }
+    public static float cos(float angle)                   { return (cos(angle, DEFAULT_TYPE)); }
+    public static float cos(float angle, AngulusType from) { return ((float)Math.cos(convert(angle, from, AngulusType.RADIANS))); }
+
     public float reduce() {
         this.angle = reduce(this.angle, this.angleType);
         return (this.angle);
@@ -116,7 +120,6 @@ public class Angulus {
 
     public static float reduce(float angle)                   { return (reduce(angle, DEFAULT_TYPE)); }
     public static float reduce(float angle, AngulusType type) { return (type.reduce(angle));          }
-
 
     public void set(Angulus angulus) { set(angulus, angulus.angleType); }
 
@@ -128,6 +131,16 @@ public class Angulus {
     public void setAngle(float angle)                                   { setAngle(angle, DEFAULT_TYPE); }
     public void setAngle(float angle, AngulusType to)                   { setAngle(angle, DEFAULT_TYPE, to); }
     public void setAngle(float angle, AngulusType from, AngulusType to) { this.angle = reduce(convert(angle, from, to), to); }
+
+    public void setAngleType(AngulusType to) { convert(to); }
+
+    public float        sin()                              { return (sin(angle, angleType)); }
+    public static float sin(float angle)                   { return (sin(angle, DEFAULT_TYPE)); }
+    public static float sin(float angle, AngulusType from) { return ((float)Math.sin(convert(angle, from, AngulusType.RADIANS))); }
+
+    public float        tan()                              { return (tan(angle, angleType)); }
+    public static float tan(float angle)                   { return (tan(angle, DEFAULT_TYPE)); }
+    public static float tan(float angle, AngulusType from) { return ((float)Math.tan(convert(angle, from, AngulusType.RADIANS))); }
 
     public static void main(String[] args) {
 
