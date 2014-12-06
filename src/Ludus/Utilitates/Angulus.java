@@ -88,8 +88,8 @@ public class Angulus {
         return (this.angle);
     }
 
-    public static float convertToDegrees  (float angle)                   { return (convertToDegrees(angle, DEFAULT_TYPE));  }
-    public static float convertToDegrees  (float angle, AngulusType from) { return (from.toDegrees(angle));                  }
+    public static float convertToDegrees  (float angle)                   { return (convertToDegrees(angle, DEFAULT_TYPE)); }
+    public static float convertToDegrees  (float angle, AngulusType from) { return (from.toDegrees(angle));                 }
 
     public float convertToGradians() {
         this.angle = convertToGradians(this.angle, this.angleType);
@@ -106,8 +106,8 @@ public class Angulus {
         return (this.angle);
     }
 
-    public static float convertToRadians  (float angle)                   { return (convertToRadians(angle, DEFAULT_TYPE));  }
-    public static float convertToRadians  (float angle, AngulusType from) { return (from.toRadians(angle));                  }
+    public static float convertToRadians  (float angle)                   { return (convertToRadians(angle, DEFAULT_TYPE)); }
+    public static float convertToRadians  (float angle, AngulusType from) { return (from.toRadians(angle));                 }
 
     public float        cos()                              { return (cos(angle, angleType)); }
     public static float cos(float angle)                   { return (cos(angle, DEFAULT_TYPE)); }
@@ -128,8 +128,8 @@ public class Angulus {
         this.angle = reduce(convert(angulus.angle, angulus.angleType, to), to);
     }
 
-    public void setAngle(float angle)                                   { setAngle(angle, DEFAULT_TYPE); }
-    public void setAngle(float angle, AngulusType to)                   { setAngle(angle, DEFAULT_TYPE, to); }
+    public void setAngle(float angle)                                   { setAngle(angle, DEFAULT_TYPE);                     }
+    public void setAngle(float angle, AngulusType to)                   { setAngle(angle, DEFAULT_TYPE, to);                 }
     public void setAngle(float angle, AngulusType from, AngulusType to) { this.angle = reduce(convert(angle, from, to), to); }
 
     public void setAngleType(AngulusType to) { convert(to); }
