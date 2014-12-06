@@ -11,6 +11,7 @@ public class Situs {
     private float x;
     private float y;
 
+    public Situs()                  { this.set(0, 0); }
     public Situs(float x, float y)  { this.set(x, y); }
     public Situs(Situs copy)        { this.set(copy); }
 
@@ -18,14 +19,17 @@ public class Situs {
     public float getY() { return (y); }
 
     public void set(float x, float y) {
-        this.x = x;
-        this.y = y;
+        setX(x);
+        setY(y);
     }
 
     public void set(Situs copy) {
-        this.x = copy.getX();
-        this.y = copy.getY();
+        setX(copy.x);
+        setY(copy.y);
     }
+
+    public void setX(float x) { this.x = x; }
+    public void setY(float y) { this.y = y; }
 
     public String toString() { return ("x : " + x + "\ny : " + y); }
 }
