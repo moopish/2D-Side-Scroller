@@ -8,7 +8,7 @@ import javax.swing.event.ChangeListener;
  * Created by Michael on 04/12/2014.
  *
  */
-public class Ludus extends JApplet implements ChangeListener{
+public final class Ludus extends JApplet implements ChangeListener{
 
     public static void main(String[] args) {
 
