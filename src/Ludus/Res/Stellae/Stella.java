@@ -11,8 +11,8 @@ import Ludus.Utilitates.Situs;
  */
 public final class Stella extends Res{
 
-    private int size;
-    // TODO add colour
+    private int size; // determines draw size and depth (smaller farther away)
+    // TODO add colour + init in constructors
 
     public Stella() {
         super();
@@ -39,11 +39,11 @@ public final class Stella extends Res{
     }
 
     public Stella(Stella copy) {
-        this();
-        set(copy);
+        super(copy.getLocation(), copy.getMovement(), new SimulacrumStellae());
     }
 
     public void set(Stella copy) {
-
+        super.set(copy);
+        // TODO colour
     }
 }
