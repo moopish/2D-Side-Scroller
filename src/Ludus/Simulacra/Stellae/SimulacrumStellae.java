@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
  *      Draw class for a star object
  *
  */
-public class SimulacrumStellae implements Simulacrum {
+public final class SimulacrumStellae implements Simulacrum {
 
     public void draw (BufferedImage image) {
 
