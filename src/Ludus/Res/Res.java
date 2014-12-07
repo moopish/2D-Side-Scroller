@@ -77,4 +77,12 @@ public abstract class Res {
         this.movement.set(velocity*angle.cos(), velocity*angle.sin());
     }
 
+    public final void updateMovement() {
+        updateMovementX();
+        updateMovementY();
+    }
+
+    public final void updateMovementX() { location.setX(location.getX() + movement.getX()); }
+    public final void updateMovementY() { location.setY(location.getY() + movement.getY()); }
+
 }
