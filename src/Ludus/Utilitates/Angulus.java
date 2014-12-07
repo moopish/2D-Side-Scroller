@@ -142,8 +142,4 @@ public class Angulus {
     public static float tan(float angle)                   { return (tan(angle, DEFAULT_TYPE)); }
     public static float tan(float angle, AngulusType from) { return ((float)Math.tan(convert(angle, from, AngulusType.RADIANS))); }
 
-    public static void main(String[] args) {
-
-    }
-
 }
