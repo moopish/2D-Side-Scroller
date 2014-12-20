@@ -17,12 +17,14 @@ public final class Stella extends Res{
     public static final Color       DEFAULT_COLOUR = new Color(255, 255, 255);
     public static final int         DEFAULT_SIZE   = 1;
 
+    private static final Simulacrum MY_DRAWER      = new SimulacrumStellae();
+
     private int     size   = DEFAULT_SIZE;    // determines draw size and depth (smaller farther away)
     private Color   colour = DEFAULT_COLOUR;
 
     public Stella() {
         super();
-        setDrawer(new SimulacrumStellae());
+        setDrawer(MY_DRAWER);
     }
 
     public Stella(float xPosition, float yPosition, float xVelocity, float yVelocity){
@@ -54,7 +56,7 @@ public final class Stella extends Res{
     }
 
     public Stella(Situs location, Situs movement, int size, Color colour) {
-        super(location, movement, new SimulacrumStellae());
+        super(location, movement, MY_DRAWER);
         setColour(colour);
         setSize(size);
     }
