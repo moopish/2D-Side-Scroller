@@ -1,6 +1,6 @@
-package Ludus.Simulacra;
+package Game.Simulacra;
 
-import Ludus.Res.Res;
+import Game.Things.Thing;
 
 import java.awt.image.BufferedImage;
 
@@ -11,8 +11,8 @@ import java.awt.image.BufferedImage;
  *     All drawing related classes must follow for drawing
  *
  */
-public abstract interface Simulacrum {
+public abstract interface Drawer {
 
-    public abstract void draw(Res toDraw, BufferedImage image);
+    public abstract void draw(Thing toDraw, BufferedImage image);
 
 }

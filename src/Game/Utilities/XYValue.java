@@ -1,4 +1,4 @@
-package Ludus.Utilitates;
+package Game.Utilities;
 
 /**
  * Created by Michael on 05/12/2014.
@@ -8,7 +8,7 @@ package Ludus.Utilitates;
  *
  *      This class represents a 2D value, like a point or a vector
  */
-public class Situs {
+public class XYValue {
 
     /////
     //   The values of the point/vector
@@ -17,13 +17,13 @@ public class Situs {
 
     /////
     //   Constructors
-    public Situs()                  { this.set(0, 0); }
-    public Situs(float x, float y)  { this.set(x, y); }
-    public Situs(Situs copy)        { this.set(copy); }
+    public XYValue()                  { this.set(0, 0); }
+    public XYValue(float x, float y)  { this.set(x, y); }
+    public XYValue(XYValue copy)        { this.set(copy); }
 
     // TODO test
-    public static float distance(Situs a, Situs b) { return ((float)Math.sqrt((b.getX() - a.getX()) + (b.getY() - a.getY()))); }
-    public float distance(Situs other) { return (distance(this, other)); }
+    public static float distance(XYValue a, XYValue b) { return ((float)Math.sqrt((b.getX() - a.getX()) + (b.getY() - a.getY()))); }
+    public float distance(XYValue other) { return (distance(this, other)); }
 
     /////
     //   Getter functions for x and y
@@ -39,7 +39,7 @@ public class Situs {
 
     /////
     //   Makes the Situs have the same values as the given Situs
-    public void set(Situs copy) {
+    public void set(XYValue copy) {
         setX(copy.x);
         setY(copy.y);
     }

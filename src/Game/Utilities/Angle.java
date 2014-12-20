@@ -1,11 +1,11 @@
-package Ludus.Utilitates;
+package Game.Utilities;
 
 /**
  * Created by Michael on 05/12/2014.
  *
  *  Angulus class (angle class)
  */
-public class Angulus {
+public class Angle {
 
     private static final AngulusType DEFAULT_TYPE = AngulusType.RADIANS;
 
@@ -59,18 +59,18 @@ public class Angulus {
         public float toRadians  (float value)  { return (value * toRadians);  }
     }
 
-    public Angulus(float angle) { this(angle, DEFAULT_TYPE); }
+    public Angle(float angle) { this(angle, DEFAULT_TYPE); }
 
-    public Angulus(float angle, AngulusType angleType) {
+    public Angle(float angle, AngulusType angleType) {
         this.angleType = angleType;
         this.angle = angleType.reduce(angle);
     }
 
-    public Angulus(Angulus angulus) { this(angulus, angulus.angleType); }
+    public Angle(Angle angle) { this(angle, angle.angleType); }
 
-    public Angulus(Angulus angulus, AngulusType to) {
+    public Angle(Angle angle, AngulusType to) {
         this.angleType = to;
-        this.angle = reduce(convert(angulus.angle, to), to);
+        this.angle = reduce(convert(angle.angle, to), to);
     }
 
     public float convert(AngulusType to) {
@@ -113,8 +113,8 @@ public class Angulus {
     public static float cos(float angle)                   { return (cos(angle, DEFAULT_TYPE)); }
     public static float cos(float angle, AngulusType from) { return ((float)Math.cos(convert(angle, from, AngulusType.RADIANS))); }
 
-    public static float   findAngle(Situs a, Situs b)   { return ((float)Math.asin((b.getY() - a.getX())/a.distance(b))); }
-    public static Angulus findAngulus(Situs a, Situs b) { return (new Angulus(findAngle(a, b))); }
+    public static float   findAngle(XYValue a, XYValue b)   { return ((float)Math.asin((b.getY() - a.getX())/a.distance(b))); }
+    public static Angle findAngulus(XYValue a, XYValue b) { return (new Angle(findAngle(a, b))); }
 
     public float reduce() {
         this.angle = reduce(this.angle, this.angleType);
@@ -124,11 +124,11 @@ public class Angulus {
     public static float reduce(float angle)                   { return (reduce(angle, DEFAULT_TYPE)); }
     public static float reduce(float angle, AngulusType type) { return (type.reduce(angle));          }
 
-    public void set(Angulus angulus) { set(angulus, angulus.angleType); }
+    public void set(Angle angle) { set(angle, angle.angleType); }
 
-    public void set(Angulus angulus, AngulusType to) {
+    public void set(Angle angle, AngulusType to) {
         this.angleType = to;
-        this.angle = reduce(convert(angulus.angle, angulus.angleType, to), to);
+        this.angle = reduce(convert(angle.angle, angle.angleType, to), to);
     }
 
     public void setAngle(float angle)                                   { setAngle(angle, DEFAULT_TYPE);                     }
