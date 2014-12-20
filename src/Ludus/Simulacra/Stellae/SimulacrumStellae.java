@@ -1,5 +1,6 @@
 package Ludus.Simulacra.Stellae;
 
+import Ludus.Res.Res;
 import Ludus.Simulacra.Simulacrum;
 
 import java.awt.image.BufferedImage;
@@ -13,7 +14,7 @@ import java.awt.image.BufferedImage;
  */
 public final class SimulacrumStellae implements Simulacrum {
 
-    public void draw (BufferedImage image) {
+    public void draw (Res toDraw, BufferedImage image) {
 
     }
 
