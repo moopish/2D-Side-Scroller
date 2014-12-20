@@ -44,7 +44,7 @@ public abstract class Res {
         set(copy);
     }
 
-    public final void draw(BufferedImage image) { drawer.draw(image);}
+    public final void draw(BufferedImage image) { drawer.draw(this, image);}
 
     public final Situs getLocation() { return (new Situs(location)); }
     public final Situs getMovement() { return (new Situs(movement)); }
