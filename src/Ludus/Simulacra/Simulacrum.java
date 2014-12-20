@@ -1,16 +1,18 @@
 package Ludus.Simulacra;
 
+import Ludus.Res.Res;
+
 import java.awt.image.BufferedImage;
 
 /**
  * Created by Michael on 05/12/2014.
  *
  *  Simulacrum interface (drawing(image of) interface)
- *     All drawing related classes must have the following for drawing
+ *     All drawing related classes must follow for drawing
  *
  */
 public abstract interface Simulacrum {
 
-    public abstract void draw(BufferedImage image);
+    public abstract void draw(Res toDraw, BufferedImage image);
 
 }
