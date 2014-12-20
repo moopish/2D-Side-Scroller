@@ -113,6 +113,9 @@ public class Angulus {
     public static float cos(float angle)                   { return (cos(angle, DEFAULT_TYPE)); }
     public static float cos(float angle, AngulusType from) { return ((float)Math.cos(convert(angle, from, AngulusType.RADIANS))); }
 
+    public static float   findAngle(Situs a, Situs b)   { return ((float)Math.asin((b.getY() - a.getX())/a.distance(b))); }
+    public static Angulus findAngulus(Situs a, Situs b) { return (new Angulus(findAngle(a, b))); }
+
     public float reduce() {
         this.angle = reduce(this.angle, this.angleType);
         return (this.angle);
