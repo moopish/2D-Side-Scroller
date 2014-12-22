@@ -15,20 +15,22 @@ public class Angle {
     private AngulusType     angleType;
 
     public enum AngulusType {
-        DEGREES  (1f, 10f/9f, (float)(Math.PI/180f), 360f),
-        GRADIANS (0.9f, 1f, (float)(Math.PI/200f), 400f),
-        RADIANS  ((float)(180f/Math.PI), (float)(200f/Math.PI), 1f, (float)Math.PI*2);
+        DEGREES  (1f, 10f/9f, (float)(Math.PI/180f), 360f, "DEGREES"),
+        GRADIANS (0.9f, 1f, (float)(Math.PI/200f), 400f, "GRADIANS"),
+        RADIANS  ((float)(180f/Math.PI), (float)(200f/Math.PI), 1f, (float)Math.PI*2, "RADIANS");
 
-        private float toDegrees;
-        private float toGradians;
-        private float toRadians;
-        private float absoluteMax;
+        private float  toDegrees;
+        private float  toGradians;
+        private float  toRadians;
+        private float  absoluteMax;
+        private String typeName;
 
-        AngulusType(float toDegrees, float toGradians, float toRadians, float absoluteMax) {
+        AngulusType(float toDegrees, float toGradians, float toRadians, float absoluteMax, String typeName) {
             this.toDegrees = toDegrees;
             this.toGradians = toGradians;
             this.toRadians = toRadians;
             this.absoluteMax = absoluteMax;
+            this.typeName = typeName;
         }
 
         public float convert(float angle, AngulusType to) {
@@ -59,6 +61,8 @@ public class Angle {
         public float toDegrees  (float value)  { return (value * toDegrees);  }
         public float toGradians (float value)  { return (value * toGradians); }
         public float toRadians  (float value)  { return (value * toRadians);  }
+
+        public String getTypeName() { return (typeName); }
     }
 
     public Angle(float angle) { this(angle, DEFAULT_TYPE); }
@@ -156,6 +160,6 @@ public class Angle {
 
     @Override
     public String toString() {
-        return super.toString();
+        return ("Angle Value : " + angle + "\nAngle Type : " + angleType.getTypeName() + "\n");
     }
 }
