@@ -22,8 +22,10 @@ public final class Game extends JFrame{
 
         Graphics2D g2d = bufferedImage.createGraphics();
 
-        LayeredStarField test = new LayeredStarField(new XYValue(600, 600), 250, 5, new Angle((float)(Math.PI/2)), false);
+        LayeredStarField test = new LayeredStarField(new XYValue(600, 600), 250, 5, new Angle((float)(Math.PI/2)), true);
         game.setVisible(true);
+
+        System.out.println(test.toString());
 
         while (true) {
             g2d.setPaint(Color.black);

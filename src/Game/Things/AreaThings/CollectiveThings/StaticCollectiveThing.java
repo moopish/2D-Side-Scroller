@@ -39,4 +39,8 @@ public abstract class StaticCollectiveThing<E extends Thing> extends AreaThing {
             e.update();
     }
 
+    @Override
+    public String toString() {
+        return (super.toString() + "Contains : " + contents.getClass().toString() + "\nCount : " + count + "\n");
+    }
 }

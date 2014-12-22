@@ -11,6 +11,16 @@ import java.awt.*;
  */
 public final class Star extends ColourableThing {
 
+    public final static Color[] STAR_COLOURS = { new Color(255, 107, 52),
+                                                 new Color(255, 168, 115),
+                                                 new Color(255, 216, 185),
+                                                 new Color(255, 255, 255),
+                                                 new Color(204, 228, 255),
+                                                 new Color(172, 210, 255),
+                                                 new Color(138, 188, 255),
+                                                 new Color(91, 151, 255),
+                                                 new Color(81, 144, 255)   };
+
     private final static float        STAR_DIFF_SIZE  = 0.25f;
 
     private int size;

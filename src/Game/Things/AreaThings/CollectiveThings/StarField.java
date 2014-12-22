@@ -33,9 +33,8 @@ public final class StarField extends StaticCollectiveThing<Star> {
 
         for (int i=0; i<getCount(); ++i) {
             if (colourful) {
-                starColour = new Color(Util.randIntRange(255),
-                                       Util.randIntRange(255),
-                                       Util.randIntRange(255));
+                starColour = Star.STAR_COLOURS[Util.randIntRange(Star.STAR_COLOURS.length-1)];
+                starColour = new Color(starColour.getRed(),starColour.getGreen(),starColour.getBlue(), Util.randIntRange(128,255));
             }
 
             set(new Star(randomLocation(), movement, starColour, starSize), i);
@@ -50,9 +49,7 @@ public final class StarField extends StaticCollectiveThing<Star> {
                 Color starColour = Color.WHITE;
 
                 if (colourful) {
-                    starColour = new Color(Util.randIntRange(255),
-                            Util.randIntRange(255),
-                            Util.randIntRange(255));
+                    starColour = Star.STAR_COLOURS[Util.randIntRange(Star.STAR_COLOURS.length-1)];
                 }
 
                 int x, y;
@@ -80,5 +77,10 @@ public final class StarField extends StaticCollectiveThing<Star> {
                 get(i).setLocation(x, y);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return (super.toString() + "Movement : " + movement.toString() + "Star size : " + starSize + "\nColourful : " + colourful + "\n");
     }
 }

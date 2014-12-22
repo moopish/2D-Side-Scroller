@@ -28,4 +28,8 @@ public final class LayeredStarField extends StaticCollectiveThing<StarField> {
             get(i).draw(g2d);
     }
 
+    @Override
+    public String toString() {
+        return (super.toString() + "Layers : " + getCount() + "\n");
+    }
 }
