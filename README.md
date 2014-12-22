@@ -1,9 +1,9 @@
-2D-Side-Scroller
+2D-Side-Scroller by Michael van Dyk
 ================
 
-Nifty UnderLine
----------------
-Don't know how this is working!
+What is this?
+-------------
+  This is just a project I am working on. It is base off
+of a project I did in grade 12, code is lost so I have no
+reference.
 
-TODO ADD SHIT
-=============
