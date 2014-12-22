@@ -1,6 +1,5 @@
 package Game.Things.MovableThings.RotatableThings.RotatableColourableThings;
 
-import Game.Drawers.Drawer;
 import Game.Things.MovableThings.RotatableThings.RotatableThing;
 import Game.Utilities.Angle;
 import Game.Utilities.XYValue;
@@ -19,13 +18,13 @@ public abstract class RotatableColourableThing extends RotatableThing {
         setColour(Color.WHITE);
     }
 
-    public RotatableColourableThing(Drawer drawer, XYValue location, XYValue movement, Angle facingAngle, Color colour) {
-        super(drawer, location, new XYValue(0, 0), facingAngle, new Angle(0));
+    public RotatableColourableThing(XYValue location, XYValue movement, Angle facingAngle, Color colour) {
+        super(location, new XYValue(0, 0), facingAngle, new Angle(0));
         setColour(colour);
     }
 
-    public RotatableColourableThing(Drawer drawer, XYValue location, XYValue movement, Angle facingAngle, Angle rotation, Color colour) {
-        super(drawer, location, new XYValue(0, 0), facingAngle, rotation);
+    public RotatableColourableThing(XYValue location, XYValue movement, Angle facingAngle, Angle rotation, Color colour) {
+        super(location, new XYValue(0, 0), facingAngle, rotation);
         setColour(colour);
     }
 

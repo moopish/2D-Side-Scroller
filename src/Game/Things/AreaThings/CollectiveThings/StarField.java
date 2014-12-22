@@ -41,26 +41,44 @@ public final class StarField extends StaticCollectiveThing<Star> {
             set(new Star(randomLocation(), movement, starColour, starSize), i);
         }
     }
-/*
-////NIFTY CODE TODO USE LATER IF CAN
-            x = (int)((Math.random() * OFF_SCREEN_DIST));
 
-            if (Util.randBool())
-                x = -x;
-            else
-                x += getDimensions().getX();
-
-            y = (int)((Math.random() * OFF_SCREEN_DIST));
-
-            if (Util.randBool())
-                y = -y;
-            else
-                y += getDimensions().getY();
-
- */
     @Override
-    public void draw(Graphics2D g2d) {
+    public void update() {
+        super.update();
+        for (int i=0; i<getCount(); ++i) {
+            if (isOutside(get(i).getLocation())) {
+                Color starColour = Color.WHITE;
 
+                if (colourful) {
+                    starColour = new Color(Util.randIntRange(255),
+                            Util.randIntRange(255),
+                            Util.randIntRange(255));
+                }
+
+                int x, y;
+                if (Util.randBool()) {
+                    x = (int)((Math.random() * OFF_SCREEN_DIST));
+
+                    if (Util.randBool())
+                        x = -x;
+                    else
+                        x += getDimensions().getX() - OFF_SCREEN_DIST * 2;
+
+                    y = (int)randomY();
+                } else {
+                    y = (int) ((Math.random() * OFF_SCREEN_DIST));
+
+                    if (Util.randBool())
+                        y = -y;
+                    else
+                        y += getDimensions().getY() - OFF_SCREEN_DIST * 2;
+
+                    x = (int)randomX();
+                }
+
+                get(i).setColour(starColour);
+                get(i).setLocation(x, y);
+            }
+        }
     }
-
 }

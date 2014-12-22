@@ -4,6 +4,8 @@ import Game.Things.AreaThings.AreaThing;
 import Game.Things.Thing;
 import Game.Utilities.XYValue;
 
+import java.awt.*;
+
 
 /**
  * Created by Michael on 21/12/2014.
@@ -18,6 +20,12 @@ public abstract class StaticCollectiveThing<E extends Thing> extends AreaThing {
         super(location, dimensions);
         this.count = count;
         contents = (E[]) (new Thing[this.count]);
+    }
+
+    @Override
+    public void draw(Graphics2D g2d) {
+        for (E e : contents)
+            e.draw(g2d);
     }
 
     public E get(int index) { return contents[index]; }

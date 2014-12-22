@@ -11,11 +11,11 @@ import java.awt.*;
  */
 public final class LayeredStarField extends StaticCollectiveThing<StarField> {
 
-    public LayeredStarField(XYValue dimensions, int layerCount, int starCount, Angle movement) {
-        this(dimensions, layerCount, starCount, movement, false);
+    public LayeredStarField(XYValue dimensions, int starCount, int layerCount, Angle movement) {
+        this(dimensions, starCount, layerCount, movement, false);
     }
 
-    public LayeredStarField(XYValue dimensions, int layerCount, int starCount, Angle movement, boolean colourful) {
+    public LayeredStarField(XYValue dimensions, int starCount, int layerCount, Angle movement, boolean colourful) {
         super(new XYValue(0, 0), dimensions, layerCount);
 
         for (int i=0; i<getCount(); ++i)
@@ -24,7 +24,8 @@ public final class LayeredStarField extends StaticCollectiveThing<StarField> {
 
     @Override
     public void draw(Graphics2D g2d) {
-
+        for (int i=0; i<getCount(); ++i)
+            get(i).draw(g2d);
     }
 
 }

@@ -28,7 +28,8 @@ public final class Star extends ColourableThing {
 
     @Override
     public void draw(Graphics2D g2d) {
-
+        g2d.setPaint(getColour());
+        g2d.fillRect((int)getX(), (int)getY(), getSizeWithDiff(), getSizeWithDiff());
     }
 
     public int getSize()         { return (size);                                  }

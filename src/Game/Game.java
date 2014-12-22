@@ -1,35 +1,58 @@
 package Game;
 
+import Game.Things.AreaThings.CollectiveThings.LayeredStarField;
+import Game.Utilities.Angle;
+import Game.Utilities.XYValue;
+
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
  * Created by Michael on 04/12/2014.
  *
  */
-public final class Game extends JFrame implements ChangeListener{
+public final class Game extends JFrame{
 
-    int x = 0;
+    private JLabel screen;
 
     public static void main(String[] args) {
         Game game = new Game();
-        BufferedImage bufferedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage bufferedImage = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
 
+        Graphics2D g2d = bufferedImage.createGraphics();
 
-        game.setIconImage(bufferedImage);
+        LayeredStarField test = new LayeredStarField(new XYValue(600, 600), 250, 5, new Angle((float)(Math.PI/2)), false);
         game.setVisible(true);
 
-        System.exit(0);
+        while (true) {
+            g2d.setPaint(Color.black);
+            g2d.fillRect(0, 0, 600, 600);
+            test.draw(g2d);
+
+            //game.setIconImage(bufferedImage);
+            game.screen.setIcon(new ImageIcon(bufferedImage));
+            test.update();
+            try {
+                Thread.sleep(10);
+            } catch (Exception e) {
+                System.exit(-1);
+            }
+        }
+
+
+        //System.exit(0);
     }
 
     public Game() {
         super();
         setSize(600,600);
+
+        screen = new JLabel();
+        screen.setLocation(0,0);
+        screen.setSize(600, 600);
+        screen.setBackground(Color.black);
+        add(screen);
     }
 
-    public void stateChanged(ChangeEvent e){
-        System.out.println(x++);
-    }
 }
