@@ -7,6 +7,8 @@ package Game.Utilities;
  */
 public class Angle {
 
+    // TODO MASSIVE TESTING
+
     private static final AngulusType DEFAULT_TYPE = AngulusType.RADIANS;
 
     private float           angle;
@@ -48,7 +50,7 @@ public class Angle {
         public float reduce(float angle) {
             if (angle >= absoluteMax)
                 angle -= absoluteMax;
-            else if (angle < 0f)
+            else if (angle <= -absoluteMax)
                 angle += absoluteMax;
 
             return (angle);
@@ -71,6 +73,13 @@ public class Angle {
     public Angle(Angle angle, AngulusType to) {
         this.angleType = to;
         this.angle = reduce(convert(angle.angle, to), to);
+    }
+
+    public void add(Angle amount) { add(convert(amount.angle, amount.angleType, this.angleType)); }
+
+    public void add(float amount) {
+        this.angle += amount;
+        reduce();
     }
 
     public float convert(AngulusType to) {
@@ -145,4 +154,8 @@ public class Angle {
     public static float tan(float angle)                   { return (tan(angle, DEFAULT_TYPE)); }
     public static float tan(float angle, AngulusType from) { return ((float)Math.tan(convert(angle, from, AngulusType.RADIANS))); }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

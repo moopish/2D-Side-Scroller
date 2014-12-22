@@ -49,5 +49,5 @@ public class XYValue {
     public final void setX(float x) { this.x = x; }
     public final void setY(float y) { this.y = y; }
 
-    public String toString() { return ("x : " + x + "\ny : " + y); }
+    public String toString() { return ("x : " + x + "\ny : " + y + "\n"); }
 }

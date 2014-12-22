@@ -45,13 +45,13 @@ public abstract class Thing {
     public final float      getX        ()      { return (location.getX()); }
     public final float      getY        ()      { return (location.getY()); }
 
-    public void setLocation (XYValue location)  { this.location.set(location); }
-    public void setLocation (float x, float y)  { this.location.set(x, y);     }
-    public void setX        (float x)           { this.location.setX(x);       }
-    public void setY        (float y)           { this.location.setY(y);       }
+    public final void setLocation (XYValue location)  { this.location.set(location); }
+    public final void setLocation (float x, float y)  { this.location.set(x, y);     }
+    public final void setX        (float x)           { this.location.setX(x);       }
+    public final void setY        (float y)           { this.location.setY(y);       }
 
     @Override
     public String toString() {
-        return ("ID : " + ID + "\nDrawer : " + drawer.toString() + "\nLocation : " + location.toString() + "\n");
+        return ("ID : " + ID + "\nDrawer : " + drawer.toString() + "\nLocation :\n" + location.toString());
     }
 }

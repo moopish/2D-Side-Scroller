@@ -24,10 +24,12 @@ public abstract class MovableThing extends Thing {
         this.movement = new XYValue(movement);
     }
 
-    public XYValue getMovement() { return(movement); }
+    public final XYValue getMovement() { return(movement); }
 
-    public void move() { setLocation(getX() + movement.getX(), getY() + movement.getY()); }
+    public final void move() { setLocation(getX() + movement.getX(), getY() + movement.getY()); }
 
-    public void setMovement(XYValue movement) { this.movement.set(movement); }
+    public final void setMovement(XYValue movement) { this.movement.set(movement); }
 
+    @Override
+    public String toString() { return (super.toString() + "Movement :\n" + movement.toString()); }
 }
