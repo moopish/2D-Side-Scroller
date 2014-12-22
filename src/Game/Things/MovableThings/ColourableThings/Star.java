@@ -1,8 +1,7 @@
-package Game.Things.Stars;
+package Game.Things.MovableThings.ColourableThings;
 
-import Game.Simulacra.Drawer;
-import Game.Simulacra.Stars.StarDrawer;
-import Game.Things.Thing;
+import Game.Drawers.Drawer;
+import Game.Drawers.Stars.StarDrawer;
 import Game.Utilities.XYValue;
 
 import java.awt.*;
@@ -11,21 +10,20 @@ import java.awt.*;
  * Created by Michael on 04/12/2014.
  *
  */
-public final class Star extends Thing {
+public final class Star extends ColourableThing {
 
     private static final float      SIZE_DIFF      = 0.25f;
 
     public static final Color       DEFAULT_COLOUR = new Color(255, 255, 255);
     public static final int         DEFAULT_SIZE   = 1;
 
-    private static final Drawer MY_DRAWER      = new StarDrawer();
+    public static final Drawer     MY_DRAWER      = new StarDrawer();
 
     private int     size   = DEFAULT_SIZE;    // determines draw size and depth (smaller farther away)
-    private Color   colour;
 
     public Star() {
-        super();
-        setDrawer(MY_DRAWER);
+        //super(DEFAULT_COLOUR);
+        //setDrawer(MY_DRAWER);
     }
 
     public Star(float xPosition, float yPosition, float xVelocity, float yVelocity){
@@ -57,26 +55,22 @@ public final class Star extends Thing {
     }
 
     public Star(XYValue location, XYValue movement, int size, Color colour) {
-        super(location, movement, MY_DRAWER);
-        setColour(colour);
+        //super(location, movement, MY_DRAWER, colour);
+        //setColour(colour);
         setSize(size);
     }
 
     public Star(Star copy) {
-        super(copy.getLocation(), copy.getMovement(), new StarDrawer());
+    //    super(copy.getLocation(), copy.getMovement(), new StarDrawer(), copy.getColour());
     }
 
-    public Color getColour()      { return (colour); }
     public int   getSize()        { return (size);   }
     public int   getSizeWithDif() { return ((int)Math.ceil(size * SIZE_DIFF)); }
 
     public void set(Star copy) {
-        super.set(copy);
-        setColour(copy.getColour());
+    //    super.set(copy);
+    //    setColour(copy.getColour());
     }
-
-    public void setColour(int r, int g, int b) { this.colour = new Color(r, g, b); }
-    public void setColour(Color colour)        { this.colour = new Color(colour.getRGB());  }
 
     public void setSize(int size) { this.size = (int)Math.ceil(size*SIZE_DIFF); }
 

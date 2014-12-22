@@ -1,88 +1,57 @@
 package Game.Things;
 
-import Game.Simulacra.Drawer;
-import Game.Utilities.Angle;
+import Game.Drawers.Drawer;
 import Game.Utilities.XYValue;
 
-import java.awt.image.BufferedImage;
-
 /**
- * Created by Michael on 04/12/2014.
+ * Created by Michael on 21/12/2014.
  *
- * Things Class (Thing Class)
+ * /////
+ * //   The Thing Class
+ * ////////////////////
+ *      //
+ *      //     The Thing class is the base for all object used. It contains
+ *      //   an ID, which will be used to store in an Thing list. All Things
+ *      //   are drawable and thus holds a Drawer for drawing. Things also
+ *      //   have a location, but not all are movable (thus no movement here).
+ *      //
+ *      //   TODO add object list to track Things
  */
+
 public abstract class Thing {
 
-    private Drawer drawer;
+    private static long      newID = 0;
 
-    private XYValue location;
-    private XYValue movement;
+    private final long       ID;
 
-    protected Thing() { init(); }
+    private Drawer           drawer;
+    private XYValue          location;
 
-    protected Thing(float xPosition, float yPosition, float xVelocity, float yVelocity, Drawer drawer){
-        this(new XYValue(xPosition, yPosition), new XYValue(xVelocity, yVelocity), drawer);
+    public Thing() {
+        ID = newID;
+        ++newID;
+        location = new XYValue(0,0);
     }
 
-    protected Thing(XYValue location, float xVelocity, float yVelocity, Drawer drawer) {
-        this(location, new XYValue(xVelocity, yVelocity), drawer);
-    }
-
-    protected Thing(float xPosition, float yPosition, XYValue movement, Drawer drawer){
-        this(new XYValue(xPosition, yPosition), movement, drawer);
-    }
-
-    protected Thing(XYValue location, XYValue movement, Drawer drawer) {
+    public Thing(Drawer drawer, XYValue location) {
         this();
-        setDrawer(drawer);
+        this.drawer = drawer;
         setLocation(location);
-        setMovement(movement);
     }
 
-    protected Thing(Thing copy) {
-        this();
-        set(copy);
+    public final Drawer     getDrawer   ()      { return (drawer);          }
+    public final long       getID       ()      { return (ID);              }
+    public final XYValue    getLocation ()      { return (location);        }
+    public final float      getX        ()      { return (location.getX()); }
+    public final float      getY        ()      { return (location.getY()); }
+
+    public void setLocation (XYValue location)  { this.location.set(location); }
+    public void setLocation (float x, float y)  { this.location.set(x, y);     }
+    public void setX        (float x)           { this.location.setX(x);       }
+    public void setY        (float y)           { this.location.setY(y);       }
+
+    @Override
+    public String toString() {
+        return ("ID : " + ID + "\nDrawer : " + drawer.toString() + "\nLocation : " + location.toString() + "\n");
     }
-
-    public final void draw(BufferedImage image) { drawer.draw(this, image);}
-
-    public final XYValue getLocation() { return (new XYValue(location)); }
-    public final XYValue getMovement() { return (new XYValue(movement)); }
-
-    public final float getXLocation() { return (location.getX()); }
-    public final float getYLocation() { return (location.getY()); }
-
-    public final float getXMovement() { return (movement.getX()); }
-    public final float getYMovement() { return (movement.getY()); }
-
-    private void init() {
-        location = new XYValue();
-        movement = new XYValue();
-    }
-
-    public final void set(Thing copy) {
-        setDrawer(copy.drawer);
-        setMovement(copy.movement);
-        setLocation(copy.location);
-    }
-
-    public final void setDrawer(Drawer drawer) { this.drawer = drawer; }
-
-    public final void setLocation(XYValue location)   { this.location.set(location); }
-    public final void setLocation(float x, float y) { this.location.set(x, y);     }
-
-    public final void setMovement(XYValue movement)   { this.movement.set(movement); }
-    public final void setMovement(float x, float y) { this.movement.set(x, y);     }
-    public final void setMovement(Angle angle, float velocity) {
-        this.movement.set(velocity*angle.cos(), velocity*angle.sin());
-    }
-
-    public final void updateMovement() {
-        updateMovementX();
-        updateMovementY();
-    }
-
-    public final void updateMovementX() { location.setX(location.getX() + movement.getX()); }
-    public final void updateMovementY() { location.setY(location.getY() + movement.getY()); }
-
 }

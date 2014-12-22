@@ -10,11 +10,13 @@ import java.awt.*;
  *  that gets drawn to screen needs its own separate drawer
  *  object that implements the drawing
  *     T - is the class that the Drawer is handling
- *          e.g. StarDrawer implements Drawer<Star>
+ *          e.g. StarDrawer implements Drawer<Stars>
  *
  */
 public abstract interface Drawer<T> {
 
     public abstract void draw(T toDraw, Graphics2D g2d);
+
+    public String getDrawerName();
 
 }

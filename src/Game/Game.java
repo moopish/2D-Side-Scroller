@@ -1,7 +1,5 @@
 package Game;
 
-import Game.Things.Stars.Star;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,8 +17,6 @@ public final class Game extends JFrame implements ChangeListener{
         Game game = new Game();
         BufferedImage bufferedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
 
-        Star star = new Star(0,0,0,0);
-        star.draw(bufferedImage);
 
         game.setIconImage(bufferedImage);
         game.setVisible(true);
