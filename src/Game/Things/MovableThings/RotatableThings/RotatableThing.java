@@ -1,6 +1,5 @@
 package Game.Things.MovableThings.RotatableThings;
 
-import Game.Drawers.Drawer;
 import Game.Things.MovableThings.MovableThing;
 import Game.Utilities.Angle;
 import Game.Utilities.XYValue;
@@ -19,12 +18,12 @@ public abstract class RotatableThing extends MovableThing {
         setRotation(0f);
     }
 
-    public RotatableThing(Drawer drawer, XYValue location, XYValue movement, Angle facingAngle) {
-        this(drawer, location, movement, facingAngle, new Angle(0f));
+    public RotatableThing(XYValue location, XYValue movement, Angle facingAngle) {
+        this(location, movement, facingAngle, new Angle(0f));
     }
 
-    public RotatableThing(Drawer drawer, XYValue location, XYValue movement, Angle facingAngle, Angle rotation) {
-        super(drawer, location, movement);
+    public RotatableThing(XYValue location, XYValue movement, Angle facingAngle, Angle rotation) {
+        super(location, movement);
         setRotation(rotation);
         setFacingAngle(facingAngle);
     }
@@ -36,4 +35,9 @@ public abstract class RotatableThing extends MovableThing {
     public void setFacingAngle(float facingAngle) { setFacingAngle(new Angle(facingAngle));    }
     public void setRotation   (Angle rotation)    { this.rotation = new Angle(rotation);       }
     public void setRotation   (float rotation)    { setRotation(new Angle(rotation));          }
+
+    @Override
+    public String toString() {
+        return (super.toString() + "Facing Angle :\n" + facingAngle.toString() + "Rotation :\n" + rotation.toString());
+    }
 }

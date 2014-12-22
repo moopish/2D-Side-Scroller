@@ -1,7 +1,8 @@
 package Game.Things;
 
-import Game.Drawers.Drawer;
 import Game.Utilities.XYValue;
+
+import java.awt.*;
 
 /**
  * Created by Michael on 21/12/2014.
@@ -24,7 +25,6 @@ public abstract class Thing {
 
     private final long       ID;
 
-    private Drawer           drawer;
     private XYValue          location;
 
     public Thing() {
@@ -33,13 +33,13 @@ public abstract class Thing {
         location = new XYValue(0,0);
     }
 
-    public Thing(Drawer drawer, XYValue location) {
+    public Thing(XYValue location) {
         this();
-        this.drawer = drawer;
         setLocation(location);
     }
 
-    public final Drawer     getDrawer   ()      { return (drawer);          }
+    public abstract void draw(Graphics2D g2d);
+
     public final long       getID       ()      { return (ID);              }
     public final XYValue    getLocation ()      { return (location);        }
     public final float      getX        ()      { return (location.getX()); }
@@ -52,6 +52,8 @@ public abstract class Thing {
 
     @Override
     public String toString() {
-        return ("ID : " + ID + "\nDrawer : " + drawer.toString() + "\nLocation :\n" + location.toString());
+        return ("ID : " + ID + "\nLocation :\n" + location.toString());
     }
+
+    public abstract void update();
 }

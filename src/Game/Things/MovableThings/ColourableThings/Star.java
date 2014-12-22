@@ -1,7 +1,6 @@
 package Game.Things.MovableThings.ColourableThings;
 
-import Game.Drawers.Drawer;
-import Game.Drawers.Stars.StarDrawer;
+import Game.Utilities.Angle;
 import Game.Utilities.XYValue;
 
 import java.awt.*;
@@ -12,66 +11,31 @@ import java.awt.*;
  */
 public final class Star extends ColourableThing {
 
-    private static final float      SIZE_DIFF      = 0.25f;
+    private final static float        STAR_DIFF_SIZE  = 0.25f;
 
-    public static final Color       DEFAULT_COLOUR = new Color(255, 255, 255);
-    public static final int         DEFAULT_SIZE   = 1;
+    private int size;
 
-    public static final Drawer     MY_DRAWER      = new StarDrawer();
+    public Star()                                         { this(1);                                                       }
+    public Star(int size)                                 { this(new XYValue(0, 0), size);                                 }
+    public Star(XYValue location, int size)               { this(location, Color.WHITE, size);                             }
+    public Star(XYValue location, Color colour, int size) { this(location, new Angle((float)(3*Math.PI/2)), colour, size); }
 
-    private int     size   = DEFAULT_SIZE;    // determines draw size and depth (smaller farther away)
-
-    public Star() {
-        //super(DEFAULT_COLOUR);
-        //setDrawer(MY_DRAWER);
+    public Star(XYValue location, Angle movement, Color colour, int size) {
+        super(location, new XYValue(size * STAR_DIFF_SIZE * movement.cos(),
+                size * STAR_DIFF_SIZE * movement.sin()), colour);
+        this.size = size;
     }
 
-    public Star(float xPosition, float yPosition, float xVelocity, float yVelocity){
-        this(xPosition, yPosition, xVelocity, yVelocity, DEFAULT_SIZE, DEFAULT_COLOUR);
+    @Override
+    public void draw(Graphics2D g2d) {
+
     }
 
-    public Star(float xPosition, float yPosition, float xVelocity, float yVelocity, int size, Color colour){
-        this(new XYValue(xPosition, yPosition), new XYValue(xVelocity, yVelocity), size, colour);
+    public int getSize()         { return (size);                                  }
+    public int getSizeWithDiff() { return ((int)Math.ceil(size * STAR_DIFF_SIZE)); }
+
+    @Override
+    public void update() {
+        move();
     }
-
-    public Star(XYValue location, float xVelocity, float yVelocity) {
-        this(location, xVelocity, yVelocity, DEFAULT_SIZE, DEFAULT_COLOUR);
-    }
-
-    public Star(XYValue location, float xVelocity, float yVelocity, int size, Color colour) {
-        this(location, new XYValue(xVelocity, yVelocity), size, colour);
-    }
-
-    public Star(float xPosition, float yPosition, XYValue movement){
-        this(xPosition, yPosition, movement, DEFAULT_SIZE, DEFAULT_COLOUR);
-    }
-
-    public Star(float xPosition, float yPosition, XYValue movement, int size, Color colour){
-        this(new XYValue(xPosition, yPosition), movement, size, colour);
-    }
-
-    public Star(XYValue location, XYValue movement) {
-        this(location, movement, DEFAULT_SIZE, DEFAULT_COLOUR);
-    }
-
-    public Star(XYValue location, XYValue movement, int size, Color colour) {
-        //super(location, movement, MY_DRAWER, colour);
-        //setColour(colour);
-        setSize(size);
-    }
-
-    public Star(Star copy) {
-    //    super(copy.getLocation(), copy.getMovement(), new StarDrawer(), copy.getColour());
-    }
-
-    public int   getSize()        { return (size);   }
-    public int   getSizeWithDif() { return ((int)Math.ceil(size * SIZE_DIFF)); }
-
-    public void set(Star copy) {
-    //    super.set(copy);
-    //    setColour(copy.getColour());
-    }
-
-    public void setSize(int size) { this.size = (int)Math.ceil(size*SIZE_DIFF); }
-
 }

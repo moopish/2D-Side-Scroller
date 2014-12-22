@@ -1,6 +1,5 @@
 package Game.Things.MovableThings;
 
-import Game.Drawers.Drawer;
 import Game.Things.Thing;
 import Game.Utilities.XYValue;
 
@@ -17,10 +16,10 @@ public abstract class MovableThing extends Thing {
         movement = new XYValue(0,0);
     }
 
-    public MovableThing(Drawer drawer, XYValue location) { this(drawer, location, new XYValue(0,0)); }
+    public MovableThing(XYValue location) { this(location, new XYValue(0,0)); }
 
-    public MovableThing(Drawer drawer, XYValue location, XYValue movement) {
-        super(drawer, location);
+    public MovableThing(XYValue location, XYValue movement) {
+        super(location);
         this.movement = new XYValue(movement);
     }
 
