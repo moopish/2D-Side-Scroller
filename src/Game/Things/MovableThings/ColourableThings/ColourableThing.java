@@ -8,6 +8,14 @@ import java.awt.*;
 /**
  * Created by Michael on 21/12/2014.
  *
+ * /////
+ * //   The ColourableThing Class
+ * ///////////////////////////
+ *      //
+ *      //     This class introduces colour to the
+ *      //  MovableThing class allowing for similar
+ *      //  Things to have different colour.
+ *      //
  */
 public abstract class ColourableThing extends MovableThing {
 

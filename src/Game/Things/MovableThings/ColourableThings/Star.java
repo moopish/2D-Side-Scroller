@@ -6,8 +6,19 @@ import Game.Utilities.XYValue;
 import java.awt.*;
 
 /**
- * Created by Michael on 04/12/2014.
- *
+ * /////
+ * //   The Star Class
+ * //       Author : Michael van Dyk
+ * //      Created : 04/12/2014
+ * ///////////////////////////
+ *      //
+ *      //     This concrete class is used to represent a
+ *      //  star. Unique to this class is a size attribute
+ *      //  which is used to create a distance effect in
+ *      //  the LayeredStarField class. Movement of a star
+ *      //  is determined with the direction of an angle and
+ *      //  magnitude is determined with the size.
+ *      //
  */
 public final class Star extends ColourableThing {
 

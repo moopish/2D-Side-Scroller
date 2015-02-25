@@ -5,10 +5,11 @@ import Game.Utilities.XYValue;
 import java.awt.*;
 
 /**
- * Created by Michael on 21/12/2014.
  *
  * /////
  * //   The Thing Class
+ * //       Author : Michael van Dyk
+ * //      Created : 21/12/2014
  * ////////////////////
  *      //
  *      //     The Thing class is the base for all object used. It contains
@@ -21,11 +22,11 @@ import java.awt.*;
 
 public abstract class Thing {
 
-    private static long      newID = 0;
+    private static long      newID = 0; //Used to give unique identifying value to each Thing
 
-    private final long       ID;
+    private final long       ID;        //The identifying value, for Thing tracking
 
-    private XYValue          location;
+    private XYValue          location;  //The location of the Thing
 
     public Thing() {
         ID = newID;
@@ -38,22 +39,34 @@ public abstract class Thing {
         setLocation(location);
     }
 
-    public abstract void draw(Graphics2D g2d);
+    /////
+    //   Abstract functions
+    //
+    public abstract void draw(Graphics2D g2d);  // Each Thing based class must be able to be drawn
+    public abstract void update();              // Each Thing based class must update (even if nothing updates)
 
+    /////
+    //   Getter functions, self-explanatory
+    //
     public final long       getID       ()      { return (ID);              }
     public final XYValue    getLocation ()      { return (location);        }
     public final float      getX        ()      { return (location.getX()); }
     public final float      getY        ()      { return (location.getY()); }
 
+    /////
+    //   Setter functions, pretty self-explanatory
+    //
     public final void setLocation (XYValue location)  { this.location.set(location); }
     public final void setLocation (float x, float y)  { this.location.set(x, y);     }
     public final void setX        (float x)           { this.location.setX(x);       }
     public final void setY        (float y)           { this.location.setY(y);       }
 
+    /////
+    //   toString must be overridden to call toString from super and then draw info specific to derived class
+    //
     @Override
     public String toString() {
         return ("ID : " + ID + "\nLocation :\n" + location.toString());
     }
 
-    public abstract void update();
 }

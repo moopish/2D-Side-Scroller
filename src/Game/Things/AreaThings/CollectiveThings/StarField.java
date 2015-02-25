@@ -46,12 +46,6 @@ public final class StarField extends StaticCollectiveThing<Star> {
         super.update();
         for (int i=0; i<getCount(); ++i) {
             if (isOutside(get(i).getLocation())) {
-                Color starColour = Color.WHITE;
-
-                if (colourful) {
-                    starColour = Star.STAR_COLOURS[Util.randIntRange(Star.STAR_COLOURS.length-1)];
-                }
-
                 int x, y;
                 if (Util.randBool()) {
                     x = (int)((Math.random() * OFF_SCREEN_DIST));
@@ -73,7 +67,6 @@ public final class StarField extends StaticCollectiveThing<Star> {
                     x = (int)randomX();
                 }
 
-                get(i).setColour(starColour);
                 get(i).setLocation(x, y);
             }
         }

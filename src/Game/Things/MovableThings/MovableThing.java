@@ -6,6 +6,15 @@ import Game.Utilities.XYValue;
 /**
  * Created by Michael on 21/12/2014.
  *
+ * /////
+ * //   The MovableThing Class
+ * ///////////////////////////
+ *      //
+ *      //     This class introduces movement to the
+ *      //  Thing class, adding 'movement' which is the
+ *      //  velocity in which a thing moves in the x, y
+ *      //  directions. Moves from a call to move.
+ *      //
  */
 public abstract class MovableThing extends Thing {
 
